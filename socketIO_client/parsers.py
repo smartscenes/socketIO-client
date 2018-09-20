@@ -1,6 +1,6 @@
 import json
 import six
-from collections import namedtuple
+from collections import namedtuple, Iterable
 from six.moves.urllib.parse import urlparse as parse_url
 from base64 import b64encode,b64decode
 from copy import deepcopy
@@ -36,7 +36,7 @@ class SocketIOPacket():
 
     def replace_placeholders(self):
         def predicate(obj):
-            return '_placeholder' in obj and 'num' in obj
+            return isinstance(obj, Iterable) and '_placeholder' in obj and 'num' in obj
 
         def fn(obj):
             return bytearray(self.binary_packets[obj['num']])
