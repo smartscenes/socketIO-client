@@ -1,6 +1,8 @@
 .. image:: https://travis-ci.org/invisibleroads/socketIO-client.svg?branch=master
     :target: https://travis-ci.org/invisibleroads/socketIO-client
 
+Fork of socketIO-client that has binary support and socketio 2 support.
+
 
 socketIO-client
 ===============
