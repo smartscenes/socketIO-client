@@ -1,8 +1,8 @@
-Fork of socketIO-client that has binary support and socketio 2 support, for use with the sstk codebase.
+Fork of socketIO-client that has **binary support** and **socketio 2 support**, for use with the sstk codebase.
 
 
 socketIO-client-sstk
-===============
+====================
 Here is a `socket.io <http://socket.io>`_ client library for Python.  You can use it to write test code for your socket.io server.
 
 This is a forked version to implement the Socket.io 2.x changes. You can find the original `here <https://github.com/invisibleroads/socketIO-client>`_.
