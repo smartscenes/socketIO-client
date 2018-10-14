@@ -26,6 +26,7 @@ setup(
     author_email='rhh@crosscompute.com',
     url='https://github.com/smartscenes/socketIO-client-sstk',
     install_requires=[
+        'invisibleroads-macros',
         'requests>=2.7.0',
         'six',
         'websocket-client',
