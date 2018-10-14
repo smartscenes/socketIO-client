@@ -10,8 +10,8 @@ DESCRIPTION = '\n\n'.join(LOAD_TEXT(_) for _ in [
     'CHANGES.rst',
 ])
 setup(
-    name='socketIO-client',
-    version='0.7.2',
+    name='socketIO-client-sstk',
+    version='2.0.0',
     description='A socket.io client library',
     long_description=DESCRIPTION,
     license='MIT',
@@ -24,7 +24,7 @@ setup(
     keywords='socket.io node.js',
     author='Roy Hyunjin Han',
     author_email='rhh@crosscompute.com',
-    url='https://github.com/invisibleroads/socketIO-client',
+    url='https://github.com/smartscenes/socketIO-client-sstk',
     install_requires=[
         'requests>=2.7.0',
         'six',

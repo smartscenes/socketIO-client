@@ -10,6 +10,6 @@ install:
   - pip install -U coverage requests six websocket-client
   - npm install -G socket.io
 before_script:
-  - DEBUG=* node socketIO_client/tests/serve.js &
+  - DEBUG=* node socketIO_client_sstk/tests/serve.js &
   - sleep 1
 script: nosetests

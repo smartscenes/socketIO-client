@@ -1,15 +1,11 @@
-.. image:: https://travis-ci.org/invisibleroads/socketIO-client.svg?branch=master
-    :target: https://travis-ci.org/invisibleroads/socketIO-client
-
-Fork of socketIO-client that has binary support and socketio 2 support.
+Fork of socketIO-client that has binary support and socketio 2 support, for use with the sstk codebase.
 
 
-socketIO-client
+socketIO-client-sstk
 ===============
 Here is a `socket.io <http://socket.io>`_ client library for Python.  You can use it to write test code for your socket.io server.
 
-Please note that this version implements `socket.io protocol 1.x <https://github.com/automattic/socket.io-protocol>`_, which is not backwards compatible.  If you want to communicate using `socket.io protocol 0.9 <https://github.com/learnboost/socket.io-spec>`_ (which is compatible with `gevent-socketio <https://github.com/abourget/gevent-socketio>`_), please use `socketIO-client 0.5.7.2 <https://pypi.python.org/pypi/socketIO-client/0.5.7.2>`_.
-
+This is a forked version to implement the Socket.io 2.x changes. You can find the original `here <https://github.com/invisibleroads/socketIO-client>`_.
 
 Installation
 ------------
@@ -24,7 +20,7 @@ Install the package in an isolated environment. ::
     source $VIRTUAL_ENV/bin/activate
 
     # Install package
-    pip install -U socketIO-client
+    pip install -U socketIO-client-sstk
 
 
 Usage
@@ -36,8 +32,8 @@ Activate isolated environment. ::
 
 Launch your socket.io server. ::
 
-    cd $(python -c "import os, socketIO_client;\
-        print(os.path.dirname(socketIO_client.__file__))")
+    cd $(python -c "import os, socketIO_client_sstk;\
+        print(os.path.dirname(socketIO_client_sstk.__file__))")
 
     DEBUG=* node tests/serve.js  # Start socket.io server in terminal one
     DEBUG=* node tests/proxy.js  # Start proxy server in terminal two
@@ -46,12 +42,12 @@ Launch your socket.io server. ::
 For debugging information, run these commands first. ::
 
     import logging
-    logging.getLogger('socketIO-client').setLevel(logging.DEBUG)
+    logging.getLogger('socketIO-client-sstk').setLevel(logging.DEBUG)
     logging.basicConfig()
 
 Emit. ::
 
-    from socketIO_client import SocketIO, LoggingNamespace
+    from socketIO_client_sstk import SocketIO, LoggingNamespace
 
     with SocketIO('127.0.0.1', 8000, LoggingNamespace) as socketIO:
         socketIO.emit('aaa')
@@ -59,7 +55,7 @@ Emit. ::
 
 Emit with callback. ::
 
-    from socketIO_client import SocketIO, LoggingNamespace
+    from socketIO_client_sstk import SocketIO, LoggingNamespace
 
     def on_bbb_response(*args):
         print('on_bbb_response', args)
@@ -70,7 +66,7 @@ Emit with callback. ::
 
 Define events. ::
 
-    from socketIO_client import SocketIO, LoggingNamespace
+    from socketIO_client_sstk import SocketIO, LoggingNamespace
 
     def on_connect():
         print('connect')
@@ -108,7 +104,7 @@ Define events. ::
 
 Define events in a namespace. ::
 
-    from socketIO_client import SocketIO, BaseNamespace
+    from socketIO_client_sstk import SocketIO, BaseNamespace
 
     class Namespace(BaseNamespace):
 
@@ -122,7 +118,7 @@ Define events in a namespace. ::
 
 Define standard events. ::
 
-    from socketIO_client import SocketIO, BaseNamespace
+    from socketIO_client_sstk import SocketIO, BaseNamespace
 
     class Namespace(BaseNamespace):
 
@@ -140,7 +136,7 @@ Define standard events. ::
 
 Define different namespaces on a single socket. ::
 
-    from socketIO_client import SocketIO, BaseNamespace
+    from socketIO_client_sstk import SocketIO, BaseNamespace
 
     class ChatNamespace(BaseNamespace):
 
@@ -162,7 +158,7 @@ Define different namespaces on a single socket. ::
 
 Connect via SSL (https://github.com/invisibleroads/socketIO-client/issues/54). ::
 
-    from socketIO_client import SocketIO
+    from socketIO_client_sstk import SocketIO
 
     # Skip server certificate verification
     SocketIO('https://127.0.0.1', verify=False)
@@ -174,7 +170,7 @@ Connect via SSL (https://github.com/invisibleroads/socketIO-client/issues/54). :
 
 Specify params, headers, cookies, proxies thanks to the `requests <http://python-requests.org>`_ library. ::
 
-    from socketIO_client import SocketIO
+    from socketIO_client_sstk import SocketIO
     from base64 import b64encode
 
     SocketIO(
@@ -186,7 +182,7 @@ Specify params, headers, cookies, proxies thanks to the `requests <http://python
 
 Wait forever. ::
 
-    from socketIO_client import SocketIO
+    from socketIO_client_sstk import SocketIO
 
     socketIO = SocketIO('127.0.0.1', 8000)
     socketIO.wait()
@@ -194,7 +190,7 @@ Wait forever. ::
 Don't wait forever. ::
 
     from requests.exceptions import ConnectionError
-    from socketIO_client import SocketIO
+    from socketIO_client_sstk import SocketIO
 
     try:
         socket = SocketIO('127.0.0.1', 8000, wait_for_connection=False)
